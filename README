@@ -1,0 +1,11 @@
+before run local notice
+1.config spark_home ,hadoop_home
+2.mvn clean compile package [-p (profileName)]
+3.run in local
+$SPARK_HOME/bin/spark-submit \
+ --class ${your_main_class}\
+ --master local \
+ --num-executors 3\
+ --driver-memory 4g\
+ --executor-memory 2g\
+ --executor-cores 1 target/${your_jar_file}  file://$PWD/input.dat file://$PWD/output
