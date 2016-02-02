@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+  <property>
+    <name>yarn.application.classpath</name>
+    <value>/home/work/packages/hadoop/current/share/hadoop/common/:/home/work/packages/hadoop/current/share/hadoop/common/lib/*:/home/work/packages/hadoop/current/share/hadoop/common/*:/home/work/packages/hadoop/current/share/hadoop/mapreduce/:/home/work/packages/hadoop/current/share/hadoop/mapreduce/lib/*:/home/work/packages/hadoop/current/share/hadoop/mapreduce/*:/home/work/packages/hadoop/current/share/hadoop/yarn/:/home/work/packages/hadoop/current/share/hadoop/yarn/lib/*:/home/work/packages/hadoop/current/share/hadoop/yarn/*:/home/work/packages/hadoop/current/share/hadoop/hdfs/:/home/work/packages/hadoop/current/share/hadoop/hdfs/lib/*:/home/work/packages/hadoop/current/share/hadoop/hdfs/*</value>
+  </property>
+
+  <property>
+    <name>yarn.log-aggregation-enable</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.address</name>
+    <value>0.0.0.0:11800</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.aux-services</name>
+    <value>mapreduce.shuffle</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+    <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.keytab</name>
+    <value>/etc/hadoop/conf/yarn_prc.keytab</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.local-dirs</name>
+    <value>/home/work/data1/yarn/lgprc-xiaomi/nodemanager,/home/work/data2/yarn/lgprc-xiaomi/nodemanager,/home/work/data3/yarn/lgprc-xiaomi/nodemanager,/home/work/data4/yarn/lgprc-xiaomi/nodemanager,/home/work/data5/yarn/lgprc-xiaomi/nodemanager,/home/work/data6/yarn/lgprc-xiaomi/nodemanager,/home/work/data7/yarn/lgprc-xiaomi/nodemanager,/home/work/data8/yarn/lgprc-xiaomi/nodemanager,/home/work/data9/yarn/lgprc-xiaomi/nodemanager,/home/work/data10/yarn/lgprc-xiaomi/nodemanager,/home/work/data11/yarn/lgprc-xiaomi/nodemanager,/home/work/data12/yarn/lgprc-xiaomi/nodemanager</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.localizer.address</name>
+    <value>0.0.0.0:11802</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.log-dirs</name>
+    <value>/home/work/log/yarn/lgprc-xiaomi/nodemanager</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.log.retain-seconds</name>
+    <value>86400</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.principal</name>
+    <value>yarn_prc/hadoop@XIAOMI.HADOOP</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.remote-app-log-dir</name>
+    <value>/var/log/hadoop-yarn/apps</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.resource.memory-mb</name>
+    <value>51200</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.vmem-pmem-ratio</name>
+    <value>10</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.webapp.address</name>
+    <value>0.0.0.0:11801</value>
+  </property>
+
+  <property>
+    <name>yarn.resourcemanager.address</name>
+    <value>10.2.201.22:11700</value>
+  </property>
+
+  <property>
+    <name>yarn.resourcemanager.admin.address</name>
+    <value>10.2.201.22:11704</value>
+  </property>
+
+  <property>
+    <name>yarn.resourcemanager.keytab</name>
+    <value>/etc/hadoop/conf/yarn_prc.keytab</value>
+  </property>
+
+  <property>
+    <name>yarn.resourcemanager.principal</name>
+    <value>yarn_prc/hadoop@XIAOMI.HADOOP</value>
+  </property>
+
+  <property>
+    <name>yarn.resourcemanager.resource-tracker.address</name>
+    <value>10.2.201.22:11703</value>
+  </property>
+
+  <property>
+    <name>yarn.resourcemanager.scheduler.address</name>
+    <value>10.2.201.22:11702</value>
+  </property>
+
+  <property>
+    <name>yarn.resourcemanager.scheduler.class</name>
+    <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler</value>
+  </property>
+
+  <property>
+    <name>yarn.resourcemanager.webapp.address</name>
+    <value>10.2.201.22:11701</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.capacity.maximum-am-resource-percent</name>
+    <value>0.2</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.capacity.maximum-applications</name>
+    <value>1000</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.capacity.root.capacity</name>
+    <value>100</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.capacity.root.default.capacity</name>
+    <value>70</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.capacity.root.default.maximum-capacity</name>
+    <value>70</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.capacity.root.default.state</name>
+    <value>RUNNING</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.capacity.root.medium.capacity</name>
+    <value>20</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.capacity.root.medium.maximum-capacity</name>
+    <value>20</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.capacity.root.medium.state</name>
+    <value>RUNNING</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.capacity.root.queues</name>
+    <value>default,medium,realtime</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.capacity.root.realtime.capacity</name>
+    <value>10</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.capacity.root.realtime.maximum-capacity</name>
+    <value>30</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.capacity.root.realtime.state</name>
+    <value>RUNNING</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.capacity.root.realtime.user-limit-factor</name>
+    <value>3</value>
+  </property>
+
+  <property>
+    <name>yarn.web-proxy.address</name>
+    <value>10.2.201.22:12001</value>
+  </property>
+
+  <property>
+    <name>yarn.web-proxy.keytab</name>
+    <value>/etc/hadoop/conf/yarn_prc.keytab</value>
+  </property>
+
+  <property>
+    <name>yarn.web-proxy.principal</name>
+    <value>yarn_prc/hadoop@XIAOMI.HADOOP</value>
+  </property>
+
+</configuration>

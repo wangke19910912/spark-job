@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+  <property>
+    <name>dfs.block.access.token.enable</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>dfs.block.local-path-access.user</name>
+    <value>work, hbase, hbase_srv</value>
+  </property>
+
+  <property>
+    <name>dfs.block.size</name>
+    <value>128m</value>
+  </property>
+
+  <property>
+    <name>dfs.client.failover.proxy.provider.lgprc-xiaomi</name>
+    <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+  </property>
+
+  <property>
+    <name>dfs.client.read.shortcircuit</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>dfs.client.read.shortcircuit.skip.auth</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>dfs.cluster.administrators</name>
+    <value>hdfs_admin</value>
+  </property>
+
+  <property>
+    <name>dfs.datanode.address</name>
+    <value>0.0.0.0:11402</value>
+  </property>
+
+  <property>
+    <name>dfs.datanode.balance.bandwidthPerSec</name>
+    <value>10485760</value>
+  </property>
+
+  <property>
+    <name>dfs.datanode.data.dir.perm</name>
+    <value>700</value>
+  </property>
+
+  <property>
+    <name>dfs.datanode.failed.volumes.tolerated</name>
+    <value>2</value>
+  </property>
+
+  <property>
+    <name>dfs.datanode.http.address</name>
+    <value>0.0.0.0:11401</value>
+  </property>
+
+  <property>
+    <name>dfs.datanode.ipc.address</name>
+    <value>0.0.0.0:11400</value>
+  </property>
+
+  <property>
+    <name>dfs.datanode.kerberos.principal</name>
+    <value>hdfs_prc/hadoop@XIAOMI.HADOOP</value>
+  </property>
+
+  <property>
+    <name>dfs.datanode.keytab.file</name>
+    <value>/etc/hadoop/conf/hdfs_prc.keytab</value>
+  </property>
+
+  <property>
+    <name>dfs.datanode.max.xcievers</name>
+    <value>4096</value>
+  </property>
+
+  <property>
+    <name>dfs.ha.automatic-failover.enabled</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>dfs.ha.fencing.methods</name>
+    <value>sshfence&#xA;shell(/bin/true)</value>
+  </property>
+
+  <property>
+    <name>dfs.ha.fencing.ssh.connect-timeout</name>
+    <value>2000</value>
+  </property>
+
+  <property>
+    <name>dfs.ha.fencing.ssh.private-key-files</name>
+    <value>/home/work/.ssh/id_rsa</value>
+  </property>
+
+  <property>
+    <name>dfs.ha.namenodes.lgprc-xiaomi</name>
+    <value>host0,host1</value>
+  </property>
+
+  <property>
+    <name>dfs.ha.zkfc.port</name>
+    <value>11300</value>
+  </property>
+
+  <property>
+    <name>dfs.hosts.exclude</name>
+    <value>/home/work/app/hdfs/lgprc-xiaomi/namenode/excludes</value>
+  </property>
+
+  <property>
+    <name>dfs.journalnode.http-address</name>
+    <value>0.0.0.0:11101</value>
+  </property>
+
+  <property>
+    <name>dfs.journalnode.kerberos.internal.spnego.principal</name>
+    <value>HTTP/hadoop@XIAOMI.HADOOP</value>
+  </property>
+
+  <property>
+    <name>dfs.journalnode.kerberos.principal</name>
+    <value>hdfs_prc/hadoop@XIAOMI.HADOOP</value>
+  </property>
+
+  <property>
+    <name>dfs.journalnode.keytab.file</name>
+    <value>/etc/hadoop/conf/hdfs_prc.keytab</value>
+  </property>
+
+  <property>
+    <name>dfs.journalnode.rpc-address</name>
+    <value>0.0.0.0:11100</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.handler.count</name>
+    <value>64</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.http-address.lgprc-xiaomi.host0</name>
+    <value>10.2.201.14:11201</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.http-address.lgprc-xiaomi.host1</name>
+    <value>10.2.201.18:11201</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.kerberos.internal.spnego.principal</name>
+    <value>HTTP/hadoop@XIAOMI.HADOOP</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.kerberos.principal</name>
+    <value>hdfs_prc/hadoop@XIAOMI.HADOOP</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.keytab.file</name>
+    <value>/etc/hadoop/conf/hdfs_prc.keytab</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.name.dir</name>
+    <value>/home/work/data/hdfs/lgprc-xiaomi/namenode</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.replication.min</name>
+    <value>2</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.rpc-address.lgprc-xiaomi.host0</name>
+    <value>10.2.201.14:11200</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.rpc-address.lgprc-xiaomi.host1</name>
+    <value>10.2.201.18:11200</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.safemode.threshold-pct</name>
+    <value>0.99f</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.shared.edits.dir</name>
+    <value>qjournal://10.2.201.14:11100;10.2.201.18:11100;10.2.201.22:11100/lgprc-xiaomi</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.upgrade.permission</name>
+    <value>0777</value>
+  </property>
+
+  <property>
+    <name>dfs.nameservices</name>
+    <value>lgprc-xiaomi</value>
+  </property>
+
+  <property>
+    <name>dfs.permissions</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>dfs.permissions.superuser</name>
+    <value>hdfs_admin</value>
+  </property>
+
+  <property>
+    <name>dfs.permissions.superusergroup</name>
+    <value>supergroup</value>
+  </property>
+
+  <property>
+    <name>dfs.secondary.namenode.kerberos.internal.spnego.principal</name>
+    <value>HTTP/hadoop@XIAOMI.HADOOP</value>
+  </property>
+
+  <property>
+    <name>dfs.secondary.namenode.kerberos.principal</name>
+    <value>hdfs_prc/hadoop@XIAOMI.HADOOP</value>
+  </property>
+
+  <property>
+    <name>dfs.secondary.namenode.keytab.file</name>
+    <value>/etc/hadoop/conf/hdfs_prc.keytab</value>
+  </property>
+
+  <property>
+    <name>dfs.web.authentication.kerberos.keytab</name>
+    <value>/etc/hadoop/conf/hdfs_prc.keytab</value>
+  </property>
+
+  <property>
+    <name>dfs.web.authentication.kerberos.principal</name>
+    <value>HTTP/hadoop@XIAOMI.HADOOP</value>
+  </property>
+
+  <property>
+    <name>dfs.web.ugi</name>
+    <value>hdfs,supergroup</value>
+  </property>
+
+  <property>
+    <name>fs.permissions.umask-mode</name>
+    <value>022</value>
+  </property>
+
+  <property>
+    <name>fs.trash.checkpoint.interval</name>
+    <value>1440</value>
+  </property>
+
+  <property>
+    <name>fs.trash.interval</name>
+    <value>10080</value>
+  </property>
+
+  <property>
+    <name>hadoop.security.group.mapping</name>
+    <value>org.apache.hadoop.security.SimpleGroupsMapping</value>
+  </property>
+
+  <property>
+    <name>ignore.secure.ports.for.testing</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>net.topology.node.switch.mapping.impl</name>
+    <value>org.apache.hadoop.net.TableMapping</value>
+  </property>
+
+  <property>
+    <name>net.topology.table.file.name</name>
+    <value>/home/work/app/hdfs/lgprc-xiaomi/namenode/rackinfo.txt</value>
+  </property>
+
+</configuration>
