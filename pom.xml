@@ -8,16 +8,22 @@
     <artifactId>example</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <parent>
+        <artifactId>parent</artifactId>
+        <groupId>com.codelab</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <properties>
         <scala.version>2.10.4</scala.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
-        <spark.core.version>1.3.3-SNAPSHOT</spark.core.version>
+        <spark.core.version>2.1.1</spark.core.version>
         <hbase.client.version>1.1.2</hbase.client.version>
         <net.sf.json.version>2.4</net.sf.json.version>
         <haddop.client.version>2.7.1</haddop.client.version>
-        <spark.streaming.version>1.2.0</spark.streaming.version>
+        <spark.streaming.version>2.1.1</spark.streaming.version>
     </properties>
 
     <dependencies>
@@ -69,42 +75,48 @@
         </dependency>
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>profile</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-                <property>
-                    <name>profile</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <properties>
-                <!--此处填写打成jar包后的名称-->
-                <finalName>wordCount</finalName>
-                <!--此处填写spark的main类-->
-                <mainClass>spark.test.WordCount</mainClass>
-            </properties>
-        </profile>
-    </profiles>
-
     <build>
-        <finalName>${finalName}</finalName>
         <plugins>
-
-            <!--生成可执行脚本插件-->
+            <!--编译插件-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <fork>true</fork>
+                    <verbose>true</verbose>
+                    <encoding>UTF-8</encoding>
                 </configuration>
+            </plugin>
+            <!-- 拷贝依赖项-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.basedir}/target/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>appassembler-maven-plugin</artifactId>
-                <version>1.1.1</version>
+                <configuration>
+                    <repositoryName>lib</repositoryName>
+                    <assembleDirectory>${project.build.directory}/${project.artifactId}-${project.version}</assembleDirectory>
+                    <platforms>
+                        <platform>unix</platform>
+                    </platforms>
+                    <programs></programs>
+                </configuration>
                 <executions>
                     <execution>
                         <id>make-assembly</id>
@@ -114,76 +126,7 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <configurationDirectory>conf</configurationDirectory>
-                    <configurationSourceDirectory>conf</configurationSourceDirectory>
-                    <copyConfigurationDirectory>true</copyConfigurationDirectory>
-                    <includeConfigurationDirectoryInClasspath>true</includeConfigurationDirectoryInClasspath>
-
-                    <repositoryLayout>flat</repositoryLayout>
-                    <repositoryName>lib</repositoryName>
-
-                    <assembleDirectory>${project.build.directory}/${project.artifactId}-${project.version}</assembleDirectory>
-
-                    <binFileExtensions>
-                        <unix>.sh</unix>
-                    </binFileExtensions>
-                    <platforms>
-                        <platform>unix</platform>
-                    </platforms>
-
-                    <extraJvmArguments>-Djava.security.krb5.conf=$BASEDIR/conf/krb5.conf</extraJvmArguments>
-
-                    <programs>
-                        <program>
-                            <!--mr config file-->
-                            <mainClass>com.xiaomi.miui.sec.hadoop.updater.UpdaterAnalysis</mainClass>
-                            <name>updaterAnalysis</name>
-                        </program>
-                    </programs>
-                </configuration>
             </plugin>
-
-
-            <!--编译插件-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-
-            <!-- 用于将maven依赖的程序进行打包为一可执行程序-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.4.1</version>
-                <configuration>
-                    <!-- get all project dependencies -->
-                    <descriptors>
-                        <descriptor>src/assembly/assembly.xml</descriptor>
-                    </descriptors>
-                    <!-- MainClass in mainfest make a executable jar -->
-                    <archive>
-                        <manifest>
-                            <mainClass>${mainClass}</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <!-- bind to the packaging phase -->
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
             <!--maven 编译scala插件-->
             <plugin>
                 <groupId>org.scala-tools</groupId>
@@ -206,6 +149,19 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--<plugin>-->
+                <!--<groupId>net.alchim31.maven</groupId>-->
+                <!--<artifactId>scala-maven-plugin</artifactId>-->
+                <!--<version>3.1.3</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<goals>-->
+                            <!--<goal>compile</goal>-->
+                            <!--<goal>testCompile</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 </project>

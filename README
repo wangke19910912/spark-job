@@ -1,7 +1,7 @@
 before run spark in local notice
 1.config spark_home ,hadoop_home
-2.mvn clean compile package [-p (profileName)]
-3.run in local
+2.mvn clean compile package
+3.run in local or cluster
 $SPARK_HOME/bin/spark-submit \
  --class ${your_main_class}\
  --master local[*] \
@@ -10,8 +10,4 @@ $SPARK_HOME/bin/spark-submit \
  --executor-memory 2g\
  --executor-cores 1 target/${your_jar_file}  file://$PWD/input.dat file://$PWD/output
 
-before run mr in local notice
-1.config hadoop_home
-2.mvn clean package appassembler:assemble
-3.sh target/${project-name}-1.0-SNAPSHOT/bin/${bin_name} -conf job-local.xml file://$PWD/input.dat file://$PWD/output 
 
